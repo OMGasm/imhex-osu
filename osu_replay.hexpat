@@ -1,3 +1,5 @@
+// https://osu.ppy.sh/wiki/en/Client/File_formats/osr_%28file_format%29
+
 #include <type/leb128.pat>
 #include <std/string.pat>
 #include <std/time.pat>
@@ -46,6 +48,8 @@ struct Judgements_taiko {
 struct Judgements_ctb {
     u16 judge_100;
     u16 judge_small_fruits;
+    u16 unknown_a; // TODO: figure out what these are
+    u16 unknown_b;
 };
 
 struct Judgements_mania {
