@@ -40,9 +40,8 @@ struct Judgements_std {
 
 struct Judgements_taiko {
     u16 judge_150;
-    padding[2];
-    u16 judge_geki;
-    u16 judge_katu;
+    // no idea what these are, there's two places in the ui that seem to be zeroes though
+    padding[6];
 };
 
 struct Judgements_ctb {
