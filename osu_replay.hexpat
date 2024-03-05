@@ -8,8 +8,8 @@ using string_t = std::string::SizedString<uLEB128>;
 using time64_t = type::time64_t;
 
 enum StringType : u8 {
-    empty,
-    string = 0x0b
+    Empty,
+    String = 0x0b
 };
 
 struct Empty {};
@@ -17,8 +17,8 @@ struct Empty {};
 struct String {
     StringType flag;
     match (flag) {
-        (StringType::empty): Empty;
-        (StringType::string): string_t string;
+        (StringType::Empty): Empty;
+        (StringType::String): string_t string;
     }
 };
 
@@ -49,7 +49,11 @@ struct Judgements_ctb {
 };
 
 struct Judgements_mania {
-    u16 judge_max300;
+    u16 judge_100;
+    u16 judge_50;
+    u16 judge_max_300;
+    u16 judge_200;
+
 };
 
 struct Judgements {
@@ -69,11 +73,11 @@ enum Combo : u8 {
 };
 
 bitfield Mod_flags {
-    NoFail          : 1;
-    Easy            : 1;
-    TouchDevice     : 1;
-    Hidden          : 1;
-    HardRock        : 1;
+    no_fail          : 1;
+    easy            : 1;
+    touch_device     : 1;
+    hidden          : 1;
+    hardRock        : 1;
     SuddenDeath     : 1;
     DoubleTime      : 1;
     Relax           : 1;
