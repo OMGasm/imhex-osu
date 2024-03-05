@@ -6,7 +6,6 @@
 using uLEB128 = type::uLEB128;
 using string_t = std::string::SizedString<uLEB128>;
 using time64_t = type::time64_t;
-using time_converter = std::time::TimeConverter;
 
 enum StringType : u8 {
     empty,
@@ -104,6 +103,7 @@ bitfield Mod_flags {
     Mirror          : 1;
 };
 
+// TODO: figure out how to use this
 fn timestamp_to_date(u64 ts) {
     const u64 ticks_per_second = 10000000U; // 10_000_000
     u64 seconds = ts / ticks_per_second;
@@ -123,10 +123,11 @@ struct Osu {
     Combo combo_type;
     Mod_flags mods;
     String life_bar_graph;
-    time64_t timestamp;
+    time64_t timestamp; // TODO: find a better way to decode this (win32 ticks)
     u32 compressed_replay_length;
     u8 compressed_replay_data[compressed_replay_length]; // LZMA
     u64 online_score_id;
+    
     if (mods.TargetPractice) { double tp_hit_accuracy; }
 };
 
